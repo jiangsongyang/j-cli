@@ -1,0 +1,60 @@
+{
+  "name": "j-cli",
+  "version": "1.0.0",
+  "description": "The CLI is used by yourself ",
+  "author": "jiangsongyang",
+  "license": "MIT",
+  "main": "index.js",
+  "bin": "./dist/index.js",
+  "engines": {
+    "node": ">=14.18.0"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "simple-git-hooks",
+    "lint:eslint": "npx eslint \"src/index.ts\" --fix",
+    "lint:prettier": "npx prettier \"src/*\" --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiangsongyang/j-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "j-cli"
+  ],
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "./packages/**/*.{ts,tsx}": [
+      "pnpm lint:eslint",
+      "pnpm lint:prettier",
+      "git add ."
+    ],
+    "./packages/**/*.{css,less}": [
+      "pnpm lint:prettier",
+      "git add ."
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/jiangsongyang/j-cli/issues"
+  },
+  "homepage": "https://github.com/jiangsongyang/j-cli#readme",
+  "devDependencies": {
+    "@types/eslint": "^8.4.3",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "eslint": "^8.21.0",
+    "eslint-config-jsy": "^1.0.4",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-config-system-split": "^1.0.4",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "lint-staged": "^13.0.3",
+    "simple-git-hooks": "^2.8.0",
+    "typescript": "^4.7.4"
+  }
+}
