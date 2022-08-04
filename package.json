@@ -11,9 +11,15 @@
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "simple-git-hooks",
+    "prepare": "husky install",
     "lint:eslint": "npx eslint \"src/index.ts\" --fix",
     "lint:prettier": "npx prettier \"src/*\" --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pnpm precommit",
+      "commit-msg": "node scripts/commit-msg.mjs"
+    }
   },
   "repository": {
     "type": "git",
@@ -45,16 +51,17 @@
     "@types/eslint": "^8.4.3",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
+    "chalk": "^5.0.1",
     "eslint": "^8.21.0",
     "eslint-config-jsy": "^1.0.4",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-config-system-split": "^1.0.4",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
-    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "simple-git-hooks": "^2.8.0",
     "typescript": "^4.7.4"
   }
 }
