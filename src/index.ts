@@ -1,5 +1,3 @@
-export const main = () => {
-  console.log('Hello World')
-}
+import { main } from './node'
 
 main()
