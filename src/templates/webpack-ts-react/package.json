@@ -8,7 +8,7 @@
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "prepare": "husky install",
+    "prepare": "npx husky install",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "lint:eslint": "npx eslint \"src\" --fix",
