@@ -1,5 +1,5 @@
 {
-  "name": "j-cli",
+  "name": "jsy-cli",
   "version": "1.0.0",
   "description": "The CLI is used by yourself ",
   "author": "jiangsongyang",
@@ -14,7 +14,6 @@
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "simple-git-hooks",
     "dev": "rollup -c rollup.config.js -w --sourcemap",
     "build": "rollup -c rollup.config.js && node scripts/move-template.mjs",
     "test": "jest",
@@ -29,16 +28,6 @@
     "cli",
     "j-cli"
   ],
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged",
-    "prepare-commit-msg": "node ./scripts/commit-msg.mjs"
-  },
-  "lint-staged": {
-    "src/*": [
-      "pnpm lint:prettier",
-      "git add ."
-    ]
-  },
   "bugs": {
     "url": "https://github.com/jiangsongyang/j-cli/issues"
   },
@@ -72,12 +61,10 @@
     "lint-staged": "^13.0.3",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
-    "simple-git-hooks": "^2.8.0",
     "string_decoder": "^1.3.0",
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "ora": "^6.1.2",
     "rollup": "^2.77.2"
   }
 }
