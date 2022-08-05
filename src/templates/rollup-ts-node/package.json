@@ -1,37 +1,41 @@
 {
-  "name": "@jiangsongyang/j-cli",
-  "version": "1.0.3",
-  "description": "The CLI is used by yourself ",
+  "name": "rollup-template",
+  "version": "1.0.0",
+  "description": "",
   "author": "jiangsongyang",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
-  "bin": {
-    "j": "bin/j.js"
-  },
   "engines": {
     "node": ">=14.18.0"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install",
     "dev": "rollup -c rollup.config.js -w --sourcemap",
-    "build": "rollup -c rollup.config.js && node scripts/move-template.mjs",
+    "build": "rollup -c rollup.config.js",
     "test": "jest",
     "lint:eslint": "npx eslint \"src/*\" --fix",
     "lint:prettier": "npx prettier \"src/*\" --write"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jiangsongyang/j-cli.git"
+  "husky": {
+    "hooks": {
+      "pre-commit": "pnpm precommit",
+      "commit-msg": "node scripts/commit-msg.mjs"
+    }
   },
-  "keywords": [
-    "cli",
-    "j-cli"
-  ],
-  "bugs": {
-    "url": "https://github.com/jiangsongyang/j-cli/issues"
+  "lint-staged": {
+    "./packages/**/*.{ts,tsx}": [
+      "pnpm lint:eslint",
+      "pnpm lint:prettier",
+      "git add ."
+
+    ],
+    "./packages/**/*.{css,less}": [
+      "pnpm lint:prettier",
+      "git add ."
+    ]
   },
-  "homepage": "https://github.com/jiangsongyang/j-cli#readme",
   "devDependencies": {
     "@babel/core": "^7.17.12",
     "@babel/preset-env": "^7.17.12",
