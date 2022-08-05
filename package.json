@@ -1,6 +1,6 @@
 {
-  "name": "jsy-cli",
-  "version": "1.0.0",
+  "name": "@jiangsongyang/j-cli",
+  "version": "1.0.1",
   "description": "The CLI is used by yourself ",
   "author": "jiangsongyang",
   "license": "MIT",
