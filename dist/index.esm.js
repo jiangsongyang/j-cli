@@ -615,8 +615,8 @@ class CAC extends EventEmitter {
 
 const cac = (name = "") => new CAC(name);
 
-var name = "jsy-cli";
-var version = "1.0.0";
+var name = "@jiangsongyang/j-cli";
+var version = "1.0.1";
 var description = "The CLI is used by yourself ";
 var author = "jiangsongyang";
 var license = "MIT";
