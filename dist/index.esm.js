@@ -616,7 +616,7 @@ class CAC extends EventEmitter {
 const cac = (name = "") => new CAC(name);
 
 var name = "@jiangsongyang/j-cli";
-var version = "1.0.2";
+var version = "1.0.3";
 var description = "The CLI is used by yourself ";
 var author = "jiangsongyang";
 var license = "MIT";
