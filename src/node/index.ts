@@ -1,3 +1,1 @@
-export const main = () => {
-  console.log('Hello World')
-}
+export { genTemplate } from './gen'
