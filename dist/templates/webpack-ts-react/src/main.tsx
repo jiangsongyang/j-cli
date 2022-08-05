@@ -1,13 +1,12 @@
-import { createRoot } from 'react'
-import App from './App'
+import ReactDOM from 'react-dom/client'
+import { App } from './components'
 
-const MOUNT_NODE_ID = '#app'
-const MOUNT_NODE = document.querySelector(MOUNT_NODE_ID)
+const MOUNT_NODE_ID = 'app'
 
-const root = createRoot(MOUNT_NODE)
+const root = document.getElementById(MOUNT_NODE_ID)
 
-const bootStrap = () => {
-  root.render(<App />, MOUNT_NODE)
+const bootstrap = () => {
+  root && ReactDOM.createRoot(root).render(<App />)
 }
 
-bootStrap()
+bootstrap()

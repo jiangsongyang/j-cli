@@ -7,6 +7,6 @@ module.exports = merge(common, {
     port: '8080',
     hot: true,
     open: true,
-    historyApiFallback: true
-  }
+    historyApiFallback: true,
+  },
 })

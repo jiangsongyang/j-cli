@@ -2,7 +2,13 @@ module.exports = {
   env: {
     jest: true,
   },
-  extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime', 'standard', 'eslint-config-jsy', 'prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'standard',
+    'eslint-config-jsy',
+    'prettier',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -22,7 +28,7 @@ module.exports = {
   },
   rules: {
     // patch
-    'no-unused-vars':'off',
+    'no-unused-vars': 'off',
     // react
     'react/display-name': 'off',
   },
