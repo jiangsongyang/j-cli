@@ -20,6 +20,8 @@ const parseTemplateType = (templateType: TemplateType) => {
       return 'rollup-ts-webpack'
     case 'rtn':
       return 'rollup-ts-node'
+    case 'vtr':
+      return 'vite-ts-react'
     default:
       throw new Error('template type not support')
   }

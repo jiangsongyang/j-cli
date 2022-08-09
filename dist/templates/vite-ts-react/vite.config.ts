@@ -16,7 +16,7 @@ import legacy from '@vitejs/plugin-legacy'
 type TEvn = Record<string, string>
 
 export const createBuild: (env: TEvn) => BuildOptions = env => ({
-  sourcemap: true,
+  sourcemap: env.VITE_SERVER_MODE === 'development',
   minify: 'esbuild',
   rollupOptions: {
     output: {
@@ -39,7 +39,8 @@ export const createViteAlias: (root: string) => AliasOptions = root => [
 export const createViteServer: (env: TEvn) => ServerOptions = env => ({
   host: true,
   open: false,
-  port: 8080
+  https: env.VITE_SERVER_HTTPS === 'true',
+  port: Number(env.VITE_SERVER_PORT),
 })
 
 export const createVitePlugins = (env: TEvn) => {
@@ -60,7 +61,7 @@ export const createVitePlugins = (env: TEvn) => {
   // install inspect plugin
   plugins.push(Inspect())
   // install visualizer plugin
-  plugins.push(visualizer({ open:true }))
+  plugins.push(visualizer({ open: env.VITE_VISUALIZER_AUTO_OPEN === 'true' }))
 
   return plugins
 }

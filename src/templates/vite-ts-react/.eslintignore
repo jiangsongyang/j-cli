@@ -1,0 +1,11 @@
+node_modules
+*.md
+*.woff
+*.ttf
+.vscode
+.idea
+dist
+/public
+.husky
+*.d.ts
+iconfont/*

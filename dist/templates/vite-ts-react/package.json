@@ -2,6 +2,7 @@
   "name": "react-template",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prepare": "npx husky install",

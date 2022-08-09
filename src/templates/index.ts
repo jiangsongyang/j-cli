@@ -1,1 +1,1 @@
-export type TemplateType = 'wtr' | 'rtw' | 'rtn'
+export type TemplateType = 'wtr' | 'rtw' | 'rtn' | 'vtr'
