@@ -3,10 +3,30 @@
   "version": "1.0.0",
   "description": "a cli tool for fastly create web fount project",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engines": {
+    "node": "16.13.0",
+    "pnpm": "7.1.7"
   },
-  "keywords": [],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "lint:eslint": "npx --no-install eslint --fix --ext .ts --quiet ./",
+    "lint:prettier": "npx --no-install prettier --write src/core/**/*.ts src/index.ts"
+  },
+  "keywords": [
+    "cli"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.4.2",
+    "eslint": "^8.45.0",
+    "eslint-config-jsy": "^1.0.6",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6",
+    "vitest": "^0.33.0"
+  },
+  "dependencies": {
+    "cac": "^6.7.14"
+  }
 }
