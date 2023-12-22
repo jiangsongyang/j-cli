@@ -3,30 +3,51 @@
   "version": "1.0.0",
   "description": "a cli tool for fastly create web fount project",
   "main": "index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "j": "./dist/index.js"
+  },
   "engines": {
     "node": "16.13.0",
     "pnpm": "7.1.7"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "dev": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript -w",
+    "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "test": "vitest",
+    "test:cov": "vitest --coverage",
     "lint:eslint": "npx --no-install eslint --fix --ext .ts --quiet ./",
     "lint:prettier": "npx --no-install prettier --write src/core/**/*.ts src/index.ts"
   },
   "keywords": [
     "cli"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "jiangsongyang <2744856708@qq.com>",
+  "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-typescript": "^11.1.2",
+    "@types/minimist": "^1.2.5",
     "@types/node": "^20.4.2",
+    "@types/prompts": "^2.4.9",
     "eslint": "^8.45.0",
     "eslint-config-jsy": "^1.0.6",
     "eslint-config-prettier": "^8.8.0",
     "prettier": "^3.0.0",
-    "typescript": "^5.1.6",
+    "rollup": "^3.26.3",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
     "vitest": "^0.33.0"
   },
   "dependencies": {
-    "cac": "^6.7.14"
+    "cac": "^6.7.14",
+    "kolorist": "^1.8.0",
+    "minimist": "^1.2.8",
+    "prompts": "^2.4.2"
   }
 }
