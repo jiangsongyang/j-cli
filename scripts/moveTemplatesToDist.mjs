@@ -18,7 +18,6 @@ function copyFileSync(source, target) {
 }
 
 function copyFolderRecursiveSync(source, target) {
-  console.log(source, target)
   if (!fs.existsSync(target)) {
     fs.mkdirSync(target)
   }
