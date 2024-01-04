@@ -15,7 +15,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript -w",
-    "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript && node ./scripts/moveTemplatesToDist.mjs",
     "test": "vitest",
     "test:cov": "vitest --coverage",
     "lint:eslint": "npx --no-install eslint --fix --ext .ts --quiet ./",

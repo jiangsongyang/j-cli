@@ -5,14 +5,19 @@ import minimist from 'minimist'
 import { red, reset } from 'kolorist'
 import { PWD } from '../../shared'
 import { FRAMEWORKS, TEMPLATES } from './templates'
+import type { Framework } from './templates'
 
 const argv = minimist<{
   t?: string
   template?: string
 }>(process.argv.slice(2), { string: ['_'] })
 
+function isValidPackageName(projectName: string) {
+  return /^(?:@[a-z\d\-*~][a-z\d\-*._~]*\/)?[a-z\d\-~][a-z\d\-._~]*$/.test(projectName)
+}
+
 export const genPrompts = async (cliProjectName: string | null) => {
-  let result: prompts.Answers<'projectName' | 'overwrite' | 'framework'>
+  let result: prompts.Answers<'projectName' | 'overwrite' | 'packageName' | 'framework' | 'variant'>
   const argTemplate = argv.template || argv.t
 
   try {
@@ -58,6 +63,12 @@ export const genPrompts = async (cliProjectName: string | null) => {
           name: 'overwriteChecker',
         },
         {
+          type: () => 'text',
+          name: 'packageName',
+          message: reset('Package name:'),
+          validate: dir => isValidPackageName(dir) || 'Invalid package.json name',
+        },
+        {
           type: argTemplate && TEMPLATES.includes(argTemplate) ? null : 'select',
           name: 'framework',
           message:
@@ -72,6 +83,19 @@ export const genPrompts = async (cliProjectName: string | null) => {
               value: framework,
             }
           }),
+        },
+        {
+          type: (framework: Framework) => (framework && framework.variants ? 'select' : null),
+          name: 'variant',
+          message: reset('Select a variant:'),
+          choices: (framework: Framework) =>
+            framework.variants.map(variant => {
+              const variantColor = variant.color
+              return {
+                title: variantColor(variant.display || variant.name),
+                value: variant.name,
+              }
+            }),
         },
       ],
       {

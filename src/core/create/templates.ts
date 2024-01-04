@@ -2,13 +2,13 @@ import { blue, cyan, green, reset, yellow } from 'kolorist'
 
 type ColorFunc = (str: string | number) => string
 
-type Framework = {
+export type Framework = {
   name: string
   display: string
   color: ColorFunc
   variants: FrameworkVariant[]
 }
-type FrameworkVariant = {
+export type FrameworkVariant = {
   name: string
   display: string
   color: ColorFunc
